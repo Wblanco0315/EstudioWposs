@@ -37,4 +37,16 @@ public class PersonaController {
         return "redirect:/";
     }
 
+    @GetMapping("/eliminar/{id_persona}")
+    public String eliminar(Persona persona){
+        personaService.eliminar(persona);
+        return "redirect:/";
+    }
+
+    @GetMapping("/editar/{id_persona}")
+    public String editar(Model model,Persona persona){
+        var encontrado=personaService.buscarPersona(persona);
+        model.addAttribute("persona",encontrado);
+        return "modificar";
+    }
 }
