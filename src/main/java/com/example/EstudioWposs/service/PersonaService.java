@@ -4,6 +4,8 @@ import com.example.EstudioWposs.models.Persona;
 
 import java.util.List;
 
+//Aqui inicializaremos los metodos con los que interactuaremos con la base de datos
+
 public interface PersonaService {
     public List<Persona> listarPersona();
 
@@ -13,3 +15,5 @@ public interface PersonaService {
 
     public Persona buscarPersona(Persona persona);
 }
+
+//creamos la clase de "PersonaServiceImpl" (Implementation)

@@ -10,25 +10,30 @@ import java.util.List;
 @Service
 public class PersonaServiceImpl implements PersonaService{
 
-    @Autowired
+    @Autowired //Se usa para inyectar Servicios de una clase en otra
     private PersonaDao personaDao;
+
+    //Sobrescribimos los metos de la interface PersonaService
+
     @Override
-    public List<Persona> listarPersona() {
+    public List<Persona> listarPersona() { //Se encarga de llamar todos los datos de la base de datos
         return (List<Persona>) personaDao.findAll();
     }
 
     @Override
-    public void guardar(Persona persona) {
+    public void guardar(Persona persona) { //Se encarga de guardar los datos
         personaDao.save(persona);
     }
 
     @Override
-    public void eliminar(Persona persona) {
+    public void eliminar(Persona persona) { //Se encarga de eliminar los datos
         personaDao.delete(persona);
     }
 
     @Override
-    public Persona buscarPersona(Persona persona) {
-        return personaDao.findById(persona.getId_persona()).orElse(null);
+    public Persona buscarPersona(Persona persona) { //Se encarga de encontrar una persona por id
+        return personaDao.findById(persona.getId_persona()).orElse(null); //en caso que no la encuetre es null
     }
 }
+
+//Creamos la carpeta "controllers" Creamos la clase "PersonaController"
