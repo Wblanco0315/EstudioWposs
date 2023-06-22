@@ -18,16 +18,16 @@
           <input type="hidden" name="id_persona" th:field="*{id_persona}">
           <label class="form-label">Nombre</label>
           <input class="form-control mb-2" type="text" name="nombre" th:field="*{nombre}">
-
+          <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error en el nombre</span>
           <label class="form-label">Apellido</label>
           <input  class="form-control mb-2" type="text" name="apellido" th:field="*{apellido}">
-
-          <label>Email</label>
+          <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error en el apellido</span>
+          <label class="form-label">Email</label>
           <input  class="form-control mb-3" type="email" name="email" th:field="*{email}">
-
+          <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error en el email</span>
           <label class="form-label">Telefono</label>
           <input  class="form-control mb-3" type="tel" name="telefono" th:field="*{telefono}">
-
+          <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">Error en el telefono</span>
           <input class="btn btn-success" type="submit" name="guardar" value="Guardar">
       </form>
   </div>

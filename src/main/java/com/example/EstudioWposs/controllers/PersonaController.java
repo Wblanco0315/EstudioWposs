@@ -2,10 +2,12 @@ package com.example.EstudioWposs.controllers;
 
 import com.example.EstudioWposs.models.Persona;
 import com.example.EstudioWposs.service.PersonaService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -26,13 +28,15 @@ public class PersonaController {
    //Funcion encargada de redirigir a la ventana de agregar datos
     @GetMapping("/agregar")
     public String agregar(Persona persona){
-
         return "modificar";
     }
 
     //Funcion encargada de guardar la información en la base de datos
     @PostMapping("/guardar")
-    public String guardar(Persona persona){
+    public String guardar(@Valid Persona persona, Errors errores){
+        if(errores.hasErrors()){
+            return "modificar";
+        }
         personaService.guardar(persona);
         return "redirect:/";
     }
